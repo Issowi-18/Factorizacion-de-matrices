@@ -10,7 +10,8 @@ public class FactorizacionLU {
         long den; // denominador
 
         public Fraction(long num, long den) {
-            if (den == 0) throw new ArithmeticException("Denominador no puede ser cero");
+            if (den == 0)
+                throw new ArithmeticException("Denominador no puede ser cero");
             if (den < 0) {
                 num = -num;
                 den = -den;
@@ -19,7 +20,6 @@ public class FactorizacionLU {
             this.num = num / g;
             this.den = den / g;
         }
-
         public Fraction(long num) {
             this(num, 1);
         }
@@ -51,7 +51,8 @@ public class FactorizacionLU {
         }
 
         public Fraction divide(Fraction other) {
-            if (other.num == 0) throw new ArithmeticException("División por cero");
+            if (other.num == 0)
+                throw new ArithmeticException("División por cero");
             return new Fraction(this.num * other.den, this.den * other.num);
         }
 
@@ -61,7 +62,8 @@ public class FactorizacionLU {
 
         @Override
         public String toString() {
-            if (den == 1) return Long.toString(num);
+            if (den == 1)
+                return Long.toString(num);
             return num + "/" + den;
         }
     }
@@ -77,7 +79,8 @@ public class FactorizacionLU {
             try {
                 if (dato.contains("/")) {
                     String[] partes = dato.split("/");
-                    if (partes.length != 2) throw new NumberFormatException();
+                    if (partes.length != 2)
+                        throw new NumberFormatException();
                     long numerador = Long.parseLong(partes[0].trim());
                     long denominador = Long.parseLong(partes[1].trim());
                     if (denominador == 0) {
@@ -148,32 +151,30 @@ public class FactorizacionLU {
         Fraction a31 = ingresarNumero(sc, "Ingrese a31: ");
         Fraction a32 = ingresarNumero(sc, "Ingrese a32: ");
         Fraction a33 = ingresarNumero(sc, "Ingrese a33: ");
-
         // ============================================
         // MATRIZ A
         // ============================================
         Fraction[][] A = {
-            {a11, a12, a13},
-            {a21, a22, a23},
-            {a31, a32, a33}
+                { a11, a12, a13 },
+                { a21, a22, a23 },
+                { a31, a32, a33 }
         };
-
         // ============================================
         // MATRIZ L (identidad)
         // ============================================
         Fraction[][] L = {
-            {new Fraction(1), new Fraction(0), new Fraction(0)},
-            {new Fraction(0), new Fraction(1), new Fraction(0)},
-            {new Fraction(0), new Fraction(0), new Fraction(1)}
+                { new Fraction(1), new Fraction(0), new Fraction(0) },
+                { new Fraction(0), new Fraction(1), new Fraction(0) },
+                { new Fraction(0), new Fraction(0), new Fraction(1) }
         };
 
         // ============================================
         // MATRIZ U (ceros)
         // ============================================
         Fraction[][] U = {
-            {new Fraction(0), new Fraction(0), new Fraction(0)},
-            {new Fraction(0), new Fraction(0), new Fraction(0)},
-            {new Fraction(0), new Fraction(0), new Fraction(0)}
+                { new Fraction(0), new Fraction(0), new Fraction(0) },
+                { new Fraction(0), new Fraction(0), new Fraction(0) },
+                { new Fraction(0), new Fraction(0), new Fraction(0) }
         };
 
         // ============================================
